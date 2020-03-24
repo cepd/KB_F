@@ -211,3 +211,11 @@ int main()
 
 Output
 ![Screen Shot 2020-03-24 at 12 30 05](https://user-images.githubusercontent.com/62136051/77388625-9becd680-6dcb-11ea-9c5f-827d53934573.png)
+
+
+**8 QUEEN***
+8 Queen merupakan suatu bentuk masalah kombinatiorial klasik yang menempatkan 8 bidak
+pada papan catur berukuran 8x8. Penjelasan mengenai jalan kerja program sudah tertera pada program.
+berikut merupakan outputnya:
+
+![Screen Shot 2020-03-24 at 12 39 34](https://user-images.githubusercontent.com/62136051/77389078-00f4fc00-6dcd-11ea-9f26-dbd1aa240832.png)
