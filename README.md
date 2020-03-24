@@ -220,3 +220,228 @@ pada papan catur berukuran 8x8. Penjelasan mengenai jalan kerja program sudah te
 berikut merupakan outputnya:
 
 ![Screen Shot 2020-03-24 at 12 39 34](https://user-images.githubusercontent.com/62136051/77389078-00f4fc00-6dcd-11ea-9f26-dbd1aa240832.png)
+
+
+###Tugas 3
+
+**Tic Tac Toe**
+
+Tic-tac-toe (juga dikenal sebagai noughts dan crosses atau Xs dan Os) adalah permainan kertas dan pensil untuk dua pemain, 
+X dan O, yang bergiliran menandai ruang dalam grid 3 × 3. Pemain yang berhasil menempatkan tiga tanda mereka di baris 
+horisontal, vertikal, atau diagonal memenangkan pertandingan. Disini saya menggunakan Algoritma minimax. 
+Algoritma Minimax merupakan algoritma yang digunakan untukmenentukan pilihan agar memperkecil kemungkinan kehilangan 
+nilaimaksimal. Algoitma ini diterpkan dalam permainan yang melibatkan duapemain seperti tic tac toe, checkers,
+go dan permainan yangmenggunakan strategi atau logika lainnya.
+
+```c++
+bool isMovesLeft(char board[3][3])
+{
+    for (int i = 0; i<3; i++)
+        for (int j = 0; j<3; j++)
+            if (board[i][j]=='_')
+                return true;
+    return false;
+}
+```
+
+Fungsi diatas mengembalikan true apabila ada perpindahan yang masih ada didalam papan. Mengembalikan
+salah ketika tidak ada perpindahan yang bisa dilakukan lagi.
+
+
+```c++
+int evaluate(char b[3][3])
+{
+    // Checking for Rows for X or O victory.
+    for (int row = 0; row<3; row++)
+    {
+        if (b[row][0]==b[row][1] &&
+            b[row][1]==b[row][2])
+        {
+            if (b[row][0]==player)
+                return +10;
+            else if (b[row][0]==opponent)
+                return -10;
+        }
+    }
+```
+
+Diatas merupakan fungsi evaluasi
+
+```c++
+   for (int col = 0; col<3; col++)
+    {
+        if (b[0][col]==b[1][col] &&
+            b[1][col]==b[2][col])
+        {
+            if (b[0][col]==player)
+                return +10;
+            
+            else if (b[0][col]==opponent)
+                return -10;
+        }
+    }
+```
+Fungsi diatas digunakan untuk mengecek kolom x dan o untuk menentukan pemenang
+
+```c
+    if (b[0][0]==b[1][1] && b[1][1]==b[2][2])
+    {
+        if (b[0][0]==player)
+            return +10;
+        else if (b[0][0]==opponent)
+            return -10;
+    }
+    
+    if (b[0][2]==b[1][1] && b[1][1]==b[2][0])
+    {
+        if (b[0][2]==player)
+            return +10;
+        else if (b[0][2]==opponent)
+            return -10;
+    }
+```
+Fungsi diatas digunakan untuk mengecek diagonal x dan o untuk menentukan pemenang
+
+
+```c++
+int minimax(char board[3][3], int depth, bool isMax)
+{
+    int score = evaluate(board);
+    
+    // If Maximizer has won the game return his/her
+    // evaluated score
+    if (score == 10)
+        return score;
+    
+    // If Minimizer has won the game return his/her
+    // evaluated score
+    if (score == -10)
+        return score;
+    
+    // If there are no more moves and no winner then
+    // it is a tie
+    if (isMovesLeft(board)==false)
+        return 0;
+    
+    // If this maximizer's move
+    if (isMax)
+    {
+        int best = -1000;
+        
+        // Traverse all cells
+        for (int i = 0; i<3; i++)
+        {
+            for (int j = 0; j<3; j++)
+            {
+                // Check if cell is empty
+                if (board[i][j]=='_')
+                {
+                    // Make the move
+                    board[i][j] = player;
+                    
+                    // Call minimax recursively and choose
+                    // the maximum value
+                    best = max( best,
+                               minimax(board, depth+1, !isMax) );
+                    
+                    // Undo the move
+                    board[i][j] = '_';
+                }
+            }
+        }
+        return best;
+    }
+    
+    // If this minimizer's move
+    else
+    {
+        int best = 1000;
+        
+        // Traverse all cells
+        for (int i = 0; i<3; i++)
+        {
+            for (int j = 0; j<3; j++)
+            {
+                // Check if cell is empty
+                if (board[i][j]=='_')
+                {
+                    // Make the move
+                    board[i][j] = opponent;
+                    
+                    // Call minimax recursively and choose
+                    // the minimum value
+                    best = min(best,
+                               minimax(board, depth+1, !isMax));
+                    
+                    // Undo the move
+                    board[i][j] = '_';
+                }
+            }
+        }
+        return best;
+    }
+}
+
+```
+
+Fungsi diatas merupakan fungsi minimax. Fungsi ini menganggap semua kemungkinan 
+perpindahan yang bisa dilakukan oleh game ini dan me return value untuk board.
+
+
+```c++
+Move findBestMove(char board[3][3])
+{
+    int bestVal = -1000;
+    Move bestMove;
+    bestMove.row = -1;
+    bestMove.col = -1;
+    
+    // Traverse all cells, evaluate minimax function for
+    // all empty cells. And return the cell with optimal
+    // value.
+    for (int i = 0; i<3; i++)
+    {
+        for (int j = 0; j<3; j++)
+        {
+            // Check if cell is empty
+            if (board[i][j]=='_')
+            {
+                // Make the move
+                board[i][j] = player;
+                
+                // compute evaluation function for this
+                // move.
+                int moveVal = minimax(board, 0, false);
+                
+                // Undo the move
+                board[i][j] = '_';
+                
+                // If the value of the current move is
+                // more than the best value, then update
+                // best/
+                if (moveVal > bestVal)
+                {
+                    bestMove.row = i;
+                    bestMove.col = j;
+                    bestVal = moveVal;
+                }
+            }
+        }
+    }
+    
+    printf("The value of the best Move is : %d\n\n",
+           bestVal);
+    
+    return bestMove;
+}
+```
+
+Fungsi diatas berfungsi untuk mencari kemungkinan perpindahan terbaik untuk pemain
+
+
+Output:
+
+
+![Screen Shot 2020-03-24 at 12 48 55](https://user-images.githubusercontent.com/62136051/77390065-c50f6600-6dcf-11ea-9d02-49c6585c696b.png)
+
+
