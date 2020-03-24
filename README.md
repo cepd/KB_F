@@ -459,3 +459,7 @@ Output:
 ![Screen Shot 2020-03-24 at 12 48 55](https://user-images.githubusercontent.com/62136051/77390065-c50f6600-6dcf-11ea-9d02-49c6585c696b.png)
 
 
+**4 Queen**
+Output:
+
+![Screen Shot 2020-03-24 at 13 20 43](https://user-images.githubusercontent.com/62136051/77390896-4e279c80-6dd2-11ea-921d-33725139b3a1.png)
