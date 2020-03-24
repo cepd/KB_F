@@ -212,6 +212,20 @@ int main()
 Output
 ![Screen Shot 2020-03-24 at 12 30 05](https://user-images.githubusercontent.com/62136051/77388625-9becd680-6dcb-11ea-9c5f-827d53934573.png)
 
+**8 Puzzle BFS**
+Program ini menyelesaikan 8 Puzzle, sama seperti yang diatas, namun menggunakan algoritma BFS
+
+*Spesifikasi Input*
+Input diawali dengan kalimat "Input your board: ". Baris berikutnya berupa input 9 angka (0-8) acak dalam bentuk array 2D 
+berukuran 3x3. Input kemudian dilanjutkan dengan "Pilih algoritma: 0=BFS, 1=A*". Input diakhiri dengan kalimat 
+"Searching for solution..."
+
+*Spesifikasi Output*
+Output diawali dengan "Solution found after n steps" dengan n merupakan jumlah langkah yang dibutuhkan untuk menyelesaikan 
+puzzle tersebut. Baris berikutnya diawali dengan "Step: x" dengan x merupakan langkah ke-x (0<=x<=n). Saat x bernilai 0,
+akan di print juga (Initial State), dan saat x bernilai n, akan di print juga (Goal State). Untuk setiap step, akan 
+dikeluarkan kondisi papan saat ini.
+
 
 **8 QUEEN**
 
