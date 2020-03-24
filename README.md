@@ -222,7 +222,7 @@ berikut merupakan outputnya:
 ![Screen Shot 2020-03-24 at 12 39 34](https://user-images.githubusercontent.com/62136051/77389078-00f4fc00-6dcd-11ea-9f26-dbd1aa240832.png)
 
 
-###Tugas 3
+### Tugas 3
 
 **Tic Tac Toe**
 
