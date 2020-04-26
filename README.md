@@ -6,6 +6,14 @@
     * [8 Puzzle BFS](#8-puzzle-BFS)
     * [8 Puzzle IDS](#8-puzzle-IDS)
     * [8 QUEEN](#8-QUEEN)
+* [Tugas 2](#Tugas-2)
+   * [8 Puzzle Heuristic 1](#8-Puzzle-Heuristic-1)
+   * [8 Puzzle Heuristic 2](#8-Puzzle-Heuristic-2)
+   * [8 Queen Hill Climbing](#8-Queen-Hill-Climbing)
+* [Tugas 3](#Tugas-3)
+   * [Tic Tac Toe](#Tic-Tac-Toe)
+* [Tugas 4](#Tugas-4)
+   * [4 Queen](#4-Queen)
 
 ### Tugas 1
 
