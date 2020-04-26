@@ -1,6 +1,8 @@
 # KB_F
 ## Penugasan Kelas
 
+
+### List Tugas
 * [Tugas 1](#Tugas-1)
     * [8 Puzzle DFS](#8-puzzle-DFS)
     * [8 Puzzle BFS](#8-puzzle-BFS)
@@ -228,7 +230,80 @@ Output
 
 **8 Puzzle BFS**
 
+Dalam program ini, melakukan pencarian state yang benar untuk menyelesaikan 8 puzzle dengan metode `(Breadth First Search)`. Setelah elemen dimasukkan pada deque dengan cara `push_back` ,dilakukan pencarian secara bfs.
+Pencarian yang dilakukan dengan memperluas jangkauan, maksudnya pencariannya dimulai dari parent kemudian ke child namun ketika sampai di child tidak meneruskan ke child bawahnya tapi ke child sebelahnya.
+
+```
+int bfs(){
+		deque<Node> toexpand;
+		deque<State> expanded;
+		
+		toexpand.push_back(*this);
+		while ( !toexpand.empty() ){
+			if ( toexpand.front().s.goal()==1 ){ 
+				cout << "------|BFS|------" << endl;
+				cout << "Solution found!" << endl;
+				toexpand.front().print();
+				cost = toexpand.front().cost;
+				toexpand.clear();
+				return cost;
+			}
+			else{
+				if ( !(toexpand.front().expanded(&expanded)) ){
+					toexpand.front().expand(&toexpand);
+					expanded.push_front( toexpand.front().s );
+					toexpand[1].cost=toexpand[0].cost+1;
+				}
+				toexpand.pop_front();
+			}
+		}
+		if ( toexpand.empty() ) cout << endl << "Solution NOT found!" << endl;
+		return 0;
+	}
+```
+
 **8 Puzzle IDS**
+
+Dalam program berikut, melakukan pencarian state yang benar untuk menyelesaikan 8 puzzle dengan metode `Iterative Deepening Search`. Metode ini adalah sama seperti metode `Depth First Search` namun dalam implementasinya ditambahkan limit dalam pencarian statenya yang dilakukan bertahap dari iterasi 0 hingga mencapai goal yang ditentukan.
+`Iterative Deepening Search` (IDS) merupakan sebuah strategi umum yang biasanya dikombinasikan dengan Depth First tree search, yang akan menemukan berapa depth limit terbaik untuk digunakan. Hal ini dilakukan dengan secara menambah limit secara bertahap, mulai dari 0,1, 2, dan seterusnya sampai goal sudah ditemukan.
+
+```
+int dfs(int idsdepth){
+		deque<Node> toexpand;
+		
+		if (idsdepth==-1) idsdepth = sizeof(int);
+		
+		toexpand.push_back(*this);
+		while ( !toexpand.empty() ){
+				if (toexpand.back().depth < idsdepth){
+					if ( toexpand.back().s.goal()==1 ){ 
+						if (idsdepth != sizeof(int))  
+							cout << "------|IDS|------" << endl;
+						cout << "Solution found!" << endl;
+						toexpand.back().print();
+						toexpand.clear();
+						return cost;
+					}
+					else{
+						Node t;
+						t= toexpand.back().copy();
+						toexpand.pop_back();
+						t.expand(&toexpand);
+					}
+				}
+				else return 0;
+		}
+		if ( toexpand.empty() ) cout << endl << "Solution NOT found!" << endl;
+		return 0;
+	}
+	
+	int ids(){
+		for(int i=0;;i++){
+			int t = dfs(i);
+			if (t!=0) return t; 
+		}
+	}
+```
 
 
 **8 QUEEN**
