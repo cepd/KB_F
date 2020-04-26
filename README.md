@@ -1,6 +1,12 @@
 # KB_F
 ## Penugasan Kelas
 
+* [Tugas 1](#Tugas-1)
+    * [8 Puzzle DFS](#8-puzzle-DFS)
+    * [8 Puzzle BFS](#8-puzzle-BFS)
+    * [8 Puzzle IDS](#8-puzzle-IDS)
+    * [8 Queen](#8-Queen)
+
 ### Tugas 1
 
 **8 Puzzle DFS**
@@ -211,6 +217,10 @@ int main()
 
 Output
 ![Screen Shot 2020-03-24 at 12 30 05](https://user-images.githubusercontent.com/62136051/77388625-9becd680-6dcb-11ea-9c5f-827d53934573.png)
+
+**8 Puzzle BFS**
+
+**8 Puzzle IDS**
 
 
 **8 QUEEN**
