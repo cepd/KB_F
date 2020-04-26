@@ -5,7 +5,7 @@
     * [8 Puzzle DFS](#8-puzzle-DFS)
     * [8 Puzzle BFS](#8-puzzle-BFS)
     * [8 Puzzle IDS](#8-puzzle-IDS)
-    * [8 Queen](#8-Queen)
+    * [8 QUEEN](#8-QUEEN)
 
 ### Tugas 1
 
